@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
 
@@ -17,6 +18,9 @@ public class Cliente {
     private UUID id;
     private String Cliente;
     private String emailCliente;
-    private List<Pedidos> pedidosCliente;
+
+    @OneToMany(mappedBy = "idCliente", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Pedido> pedidosCliente;
+
     private String cpfCliente;
 }

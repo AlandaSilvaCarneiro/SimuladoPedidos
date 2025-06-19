@@ -2,9 +2,9 @@ package br.proj.java.Entitys;
 
 
 import jakarta.persistence.*;
-import jdk.jfr.Category;
 
 import java.math.BigDecimal;
+import java.util.Set;
 import java.util.UUID;
 
 @Entity
@@ -21,5 +21,8 @@ public class Produto {
     private BigDecimal precoProduto;
 
     private Integer estoque;
+
+    @ManyToMany(mappedBy = "produtosPedidos")
+    private Set<Pedido> produtoPedido;
 
 }
